@@ -6,24 +6,29 @@ from ordinaland import *
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template('index.html')
 
-"""
-@app.route("/blog/{num_page}")
+@app.route("/blog")
+def blog():
+    return render_template('blog.html')
 
-@app.route("/article/{num_article}")
+@app.route("/article")
+def article():
+    return render_template('article.html')
 
 @app.route("/glossaire")
-
-@app.route("/glossaire/{mot}")
+def glossaire():
+    return render_template('glossaire.html')
 
 @app.route("/contact")
+def contact():
+    return render_template('contact.html')
 
 @app.route("/monter-ordinateur")
-
-@app.route("/afficher-ordinateur", methods=['POST'])
-"""
+def construire():
+    return render_template('construire.html')
 
 
 if __name__ == "__main__":
-    app.run(debut = True)
+    app.run(debug = True)
+
