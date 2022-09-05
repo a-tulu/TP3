@@ -6,15 +6,49 @@
     <link rel="stylesheet" href="/static/style.css"/>
 </head>
 <body>
-    <header>OrdinaLand   <a href="index.html">Accueil</a>   <a href="construire.html">Construire un ordinateur</a>
-    <a href="blog.html">Blog</a>   <a href="glossaire.html">Glossaire</a>   <a href="contact.html">Contact</a></header>
+    <header>OrdinaLand   <a href="/">Accueil</a>   <a href="/monter-ordinateur">Construire un ordinateur</a>
+    <a href="/blog/1">Blog</a>   <a href="/glossaire">Glossaire</a>   <a href="/contact">Contact</a></header>
     <h1><b>OrdinaLand</b><br><i><u>La</u> référence en matière d'ordinateurs</i></h1>
     <h3>Sur le Blog...</h3>
-    <p>Article 1    <a href="article.html">Lire l'article</a></p>
-    <p>Article 2    <a href="article.html">Lire l'article</a></p>
-    <p>Article 3    <a href="article.html">Lire l'article</a></p>
-    <p><a href="article.html">1</a> <a href="article.html">2</a> <a href="article.html">3</a> <a href="article.html">4
-        </a> <a href="article.html">5</a></p>
+
+    {% if var0 == var1 %}
+        {%if ((var1 * 6) - 3) == (var3 - 1) %}
+            <p>{{var2[(var1 * 6) - 6]}}<br><br>{{var2[(var1 * 6) - 5]}}<br><br>
+            <a href="article.html">Lire l'article</a></p>
+            <p>{{var2[(var1 * 6) - 4]}}<br><br>{{var2[(var1 * 6) - 3]}}<br><br>
+            <a href="article.html">Lire l'article</a></p>
+        {% elif ((var1 * 6) - 5) == (var3 - 1) %}
+            <p>{{var2[(var1 * 6) - 6]}}<br><br>{{var2[(var1 * 6) - 5]}}<br><br>
+            <a href="article.html">Lire l'article</a></p>
+        {% else %}
+            <p>baba</p>
+            <p>{{var2[(var1 * 6) - 6]}}<br><br>{{var2[(var1 * 6) - 5]}}<br><br>
+            <a href="article.html">Lire l'article</a></p>
+            <p>{{var2[(var1 * 6) - 4]}}<br><br>{{var2[(var1 * 6) - 3]}}<br><br>
+            <a href="article.html">Lire l'article</a></p>
+            <p>{{var2[(var1 * 6) - 2]}}<br><br>{{var2[(var1 * 6) - 1]}}<br><br>
+            <a href="article.html">Lire l'article</a></p>
+        {% endif %}
+    {% endif %}
+
+    {% if var0 != var1 %}
+        <p>{{var2[(var1 * 6) - 6]}}<br><br>{{var2[(var1 * 6) - 5]}}<br><br>
+            <a href="article.html">Lire l'article</a></p>
+        <p>{{var2[(var1 * 6) - 4]}}<br><br>{{var2[(var1 * 6) - 3]}}<br><br>
+            <a href="article.html">Lire l'article</a></p>
+        <p>{{var2[(var1 * 6) - 2]}}<br><br>{{var2[(var1 * 6) - 1]}}<br><br>
+            <a href="article.html">Lire l'article</a></p>
+    {% endif %}
+
+    <br>
+    {% for page in range(1, var0 + 1) %}
+        {% if (page == var1) %}
+            <nobr>{{page}}</nobr>
+        {% else %}
+            <nobr><a href="/blog/{{page}}">{{page}}</a></nobr>
+        {% endif %}
+    {% endfor %}
+    <br><br>
     <footer>2022 - OrdinaLand</footer>
 </body>
 </html>
