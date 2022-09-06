@@ -33,10 +33,21 @@ class Article:
         return self.texte.split('\n\n')
 
     def temps_lecture(self):
-        # TODO
-        print("TODO: Estimer le temps requis pour lire l'article (en secondes, à un rythme de 200 mots par minute)")
 
-        return 0
+        texte_stripped = self.texte.replace("\n", " ")
+        texte_split = texte_stripped.split(" ")
+
+        nb_mots = 0
+        for mot in texte_split:
+            if mot != "":
+                if "'" in mot:
+                    nb_mots += 2
+                else:
+                    nb_mots += 1
+
+        nb_secondes = (nb_mots * 60) // 200
+
+        return nb_secondes
 
     @classmethod
     def lire_deux_paragraphes(cls):
@@ -66,6 +77,8 @@ class Article:
                 articles_variables.append(string_deux_paragraphes)
             else:
                 articles_variables.append(tableau_article_sans_n[0])
+
+
 
         return articles_variables
 

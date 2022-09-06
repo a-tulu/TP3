@@ -9,8 +9,23 @@
     <header>OrdinaLand   <a href="/">Accueil</a>   <a href="/monter-ordinateur">Construire un ordinateur</a>
     <a href="/blog/1">Blog</a>   <a href="/glossaire">Glossaire</a>   <a href="/contact">Contact</a></header>
     <h1><b>OrdinaLand</b><br><i><u>La</u> référence en matière d'ordinateurs</i></h1>
-    <p>Article<br><img src="penguin.png" alt="Image" /></p>
-    <p><b>Plus d'articles</b><br><a href="article.html">Article précédant/suivant</a></p>
+
+    <h2><b>{{titres}} publié le {{date}}</b></h2>
+    <p>Temps de lecture : {{temps}} secondes</p>
+    <p><img src="/static/{{image}}" alt="{{image}}" /></p>
+    <p><pre>{{texte}}</pre></p>
+
+    <h2>Plus d'articles...</h2>
+
+    {% if id == (articles - 1) %}
+        <p><a href="/article/{{id - 1}}"><<< {{tableau[id - 1].titre}}</a></p>
+    {% elif id == 0 %}
+        <p><a href="/article/{{id + 1}}">{{tableau[id + 1].titre}} >>></a></p>
+    {% else %}
+        <p><a href="/article/{{id - 1}}"><<< {{tableau[id - 1].titre}}</a><br><br>
+            <a href="/article/{{id + 1}}">{{tableau[id + 1].titre}} >>></a></p>
+    {% endif %}
+
     <footer>2022 - OrdinaLand</footer>
 </body>
 </html>
