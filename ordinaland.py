@@ -8,13 +8,38 @@ class Definition:
         self.source = source
 
     def termes_relies(self):
-        # TODO : passer à travers tous les termes définis dans le
-        # tableau `glossaire` et retourner un tableau de termes qui
-        # sont présents dans le texte
-        print('TODO : trouver les mots reliés dans le Glossaire:')
-        print(glossaire)
+        text = self.texte
+        text_strip = text.strip("\n")
+        text_split = text_strip.split(" ")
 
-        return []
+        nouv_text_split = []
+        for mot in text_split:
+            nouv_mot = ""
+            for lettres in mot:
+                if lettres.isalpha():
+                    nouv_mot += lettres
+
+            pet_mot = nouv_mot.lower()
+            nouv_text_split.append(pet_mot)
+
+        tab_terme = []
+        for objet in glossaire:
+            tab_terme.append(objet.terme)
+
+        tab_trouve = []
+        for ob in nouv_text_split:
+            increm = 0
+
+            for ob2 in tab_terme:
+                if (ob2 == ob) and (ob != self.terme):
+                    for mot_deja_place in tab_trouve:
+                        if mot_deja_place == ob2:
+                            increm += 1
+                    if increm == 0:
+                        tab_trouve.append(ob2)
+
+
+        return tab_trouve
 
 
 class Article:

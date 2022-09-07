@@ -33,8 +33,16 @@ def article(id):
                            texte = articles[id_int].texte, id = id_int, articles = len(articles), tableau = articles)
 
 @app.route("/glossaire")
-def glossaire():
-    return render_template('glossaire.html')
+def glossaires():
+    return render_template('glossaire.html', glos = glossaire)
+
+@app.route("/glossaire/<id>")
+def definition(id):
+    for objet in glossaire:
+        if id == objet.terme:
+            place = glossaire.index(objet)
+    return render_template('definition.html', mot = id, glos = glossaire, place = place,
+                           relie = Definition.termes_relies(glossaire[place]))
 
 @app.route("/contact")
 def contact():

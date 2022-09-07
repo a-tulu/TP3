@@ -2,19 +2,26 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Glossaire</title>
+    <title>Definition</title>
     <link rel="stylesheet" href="/static/style.css"/>
 </head>
 <body>
     <header>OrdinaLand   <a href="/">Accueil</a>   <a href="/construire">Construire un ordinateur</a>
     <a href="/blog/1">Blog</a>   <a href="/glossaire">Glossaire</a>   <a href="/contact">Contact</a></header>
     <h1><b>OrdinaLand</b><br><i><u>La</u> référence en matière d'ordinateurs</i></h1>
-    <h2><b>Glossaire</b></h2>
+
+    <h2><b>Définition : {{mot}}</b></h2>
+    <p>{{glos[place].texte}}</p>
+    <p>Source : <a href="{{glos[place].source}}">{{glos[place].source}}</a></p>
+    <h3><b>Mots reliés</b></h3>
     <p>
-    {% for objet in glos %}
-        <a href="/glossaire/{{objet.terme}}">{{objet.terme}}</a><br>
-    {% endfor %}
+        {% for item in relie %}
+        <a href="/glossaire/{{item}}">{{item}}</a><br>
+        {% endfor %}
+        <br>
+        <a href="/glossaire">Retour au Glossaire</a>
     </p>
+
     <footer>2022 - OrdinaLand</footer>
 </body>
 </html>
