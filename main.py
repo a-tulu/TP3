@@ -50,7 +50,13 @@ def contact():
 
 @app.route("/construire")
 def construire():
-    return render_template('construire.html')
+    return render_template('construire.html', choix = choix_composantes)
+
+@app.route("/afficher-ordinateur", methods = ['POST'])
+def afficher():
+    codepostal = request.form['postalcode']
+    monitor = request.form['monitor']
+    return render_template('afficher-ordinateur.html', postalcode = codepostal)
 
 
 if __name__ == "__main__":

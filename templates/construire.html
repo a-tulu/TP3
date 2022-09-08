@@ -11,6 +11,153 @@
     <h1><b>OrdinaLand</b><br><i><u>La</u> référence en matière d'ordinateurs</i></h1>
     <h2><b>Monter votre ordinateur</b></h2>
     <p>Cette page sert d'assistant pour choisir les composantes de votre futur ordinateur</p>
+
+    <form method="post" action="/afficher-ordinateur">
+        <p><h3>Case <a href="/glossaire/case">(description)</a></h3></p>
+        <div>
+            <input type="radio" id="case1" name="case" value="deepcool">
+            <label for="case1"><u>{{(choix['case'])[0].prix}}</u> - {{(choix['case'])[0].description}}
+            <a href="{{(choix['case'])[0].lien}}">[voir]</a></label>
+            <br>
+            <input type="radio" id="case2" name="case" value="kediers">
+            <label for="case2"><u>{{(choix['case'])[1].prix}}</u> - {{(choix['case'])[1].description}}
+            <a href="{{(choix['case'])[1].lien}}">[voir]</a></label>
+            <br>
+            <input type="radio" id="case3" name="case" value="lian">
+            <label for="case3"><u>{{(choix['case'])[2].prix}}</u> - {{(choix['case'])[2].description}}
+            <a href="{{(choix['case'])[2].lien}}">[voir]</a></label>
+        </div>
+
+        <p><h3>Motherboard <a href="/glossaire/motherboard">(description)</a></h3></p>
+        <div>
+            <input type="radio" id="motherboard1" name="motherboard" value="ds3h">
+            <label for="motherboard1"><u>{{(choix['motherboard'])[0].prix}}</u> - {{(choix['motherboard'])[0].description}}
+            <a href="{{(choix['motherboard'])[0].lien}}">[voir]</a></label>
+            <br>
+            <input type="radio" id="motherboard2" name="motherboard" value="gaming">
+            <label for="motherboard2"><u>{{(choix['motherboard'])[1].prix}}</u> - {{(choix['motherboard'])[1].description}}
+            <a href="{{(choix['motherboard'])[1].lien}}">[voir]</a></label>
+        </div>
+
+        <p><h3>Cpu <a href="/glossaire/cpu">(description)</a></h3></p>
+        <div>
+            <input type="radio" id="cpu1" name="cpu" value="5500">
+            <label for="cpu1"><u>{{(choix['cpu'])[0].prix}}</u> - {{(choix['cpu'])[0].description}}
+            <a href="{{(choix['cpu'])[0].lien}}">[voir]</a></label>
+            <br>
+            <input type="radio" id="cpu2" name="cpu" value="5800x">
+            <label for="cpu2"><u>{{(choix['cpu'])[1].prix}}</u> - {{(choix['cpu'])[1].description}}
+            <a href="{{(choix['cpu'])[1].lien}}">[voir]</a></label>
+            <br>
+            <input type="radio" id="cpu3" name="cpu" value="5900x">
+            <label for="cpu3"><u>{{(choix['cpu'])[2].prix}}</u> - {{(choix['cpu'])[2].description}}
+            <a href="{{(choix['cpu'])[2].lien}}">[voir]</a></label>
+            <br>
+            <input type="radio" id="cpu4" name="cpu" value="5950x">
+            <label for="cpu4"><u>{{(choix['cpu'])[3].prix}}</u> - {{(choix['cpu'])[3].description}}
+            <a href="{{(choix['cpu'])[3].lien}}">[voir]</a></label>
+        </div>
+
+        <p><h3>Storage <a href="/glossaire/storage">(description)</a></h3></p>
+        <div>
+            <input type="radio" id="storage1" name="storage" value="acer">
+            <label for="storage1"><u>{{(choix['storage'])[0].prix}}</u> - {{(choix['storage'])[0].description}}
+            <a href="{{(choix['storage'])[0].lien}}">[voir]</a></label>
+            <br>
+            <input type="radio" id="storage2" name="storage" value="reletech">
+            <label for="storage2"><u>{{(choix['storage'])[1].prix}}</u> - {{(choix['storage'])[1].description}}
+            <a href="{{(choix['storage'])[1].lien}}">[voir]</a></label>
+            <br>
+            <input type="radio" id="storage3" name="storage" value="samsung">
+            <label for="storage3"><u>{{(choix['storage'])[2].prix}}</u> - {{(choix['storage'])[2].description}}
+            <a href="{{(choix['storage'])[2].lien}}">[voir]</a></label>
+        </div>
+
+        <p><h3>Cooling <a href="/glossaire/cooling">(description)</a></h3></p>
+        <div>
+            <input type="radio" id="cooling1" name="cooling" value="masterliquid">
+            <label for="cooling1"><u>{{(choix['cooling'])[0].prix}}</u> - {{(choix['cooling'])[0].description}}
+            <a href="{{(choix['cooling'])[0].lien}}">[voir]</a></label>
+            <br>
+            <input type="radio" id="cooling2" name="cooling" value="rosewill">
+            <label for="cooling2"><u>{{(choix['cooling'])[1].prix}}</u> - {{(choix['cooling'])[1].description}}
+            <a href="{{(choix['cooling'])[1].lien}}">[voir]</a></label>
+            <br>
+            <input type="radio" id="cooling3" name="cooling" value="lian">
+            <label for="cooling3"><u>{{(choix['cooling'])[2].prix}}</u> - {{(choix['cooling'])[2].description}}
+            <a href="{{(choix['cooling'])[2].lien}}">[voir]</a></label>
+        </div>
+
+        <p><h3>Ram <a href="/glossaire/ram">(description)</a></h3></p>
+        <div>
+            <input type="radio" id="ram1" name="ram" value="silicon">
+            <label for="ram1"><u>{{(choix['ram'])[0].prix}}</u> - {{(choix['ram'])[0].description}}
+            <a href="{{(choix['ram'])[0].lien}}">[voir]</a></label>
+            <br>
+            <input type="radio" id="ram2" name="ram" value="samsung">
+            <label for="ram2"><u>{{(choix['ram'])[1].prix}}</u> - {{(choix['ram'])[1].description}}
+            <a href="{{(choix['ram'])[1].lien}}">[voir]</a></label>
+        </div>
+
+        <p><h3>Power <a href="/glossaire/power">(description)</a></h3></p>
+        <div>
+            <input type="radio" id="power1" name="power" value="evga">
+            <label for="power1"><u>{{(choix['power'])[0].prix}}</u> - {{(choix['power'])[0].description}}
+            <a href="{{(choix['power'])[0].lien}}">[voir]</a></label>
+            <br>
+            <input type="radio" id="power2" name="power" value="corsair">
+            <label for="power2"><u>{{(choix['power'])[1].prix}}</u> - {{(choix['power'])[1].description}}
+            <a href="{{(choix['power'])[1].lien}}">[voir]</a></label>
+        </div>
+
+        <p><h3>Keyboard <a href="/glossaire/keyboard">(description)</a></h3></p>
+        <div>
+            <input type="radio" id="keyboard1" name="keyboard" value="mk1">
+            <label for="keyboard1"><u>{{(choix['keyboard'])[0].prix}}</u> - {{(choix['keyboard'])[0].description}}
+            <a href="{{(choix['keyboard'])[0].lien}}">[voir]</a></label>
+            <br>
+            <input type="radio" id="keyboard2" name="keyboard" value="corsair">
+            <label for="keyboard2"><u>{{(choix['keyboard'])[1].prix}}</u> - {{(choix['keyboard'])[1].description}}
+            <a href="{{(choix['keyboard'])[1].lien}}">[voir]</a></label>
+            <br>
+            <input type="radio" id="keyboard3" name="keyboard" value="gamdias">
+            <label for="keyboard3"><u>{{(choix['keyboard'])[2].prix}}</u> - {{(choix['keyboard'])[2].description}}
+            <a href="{{(choix['keyboard'])[2].lien}}">[voir]</a></label>
+        </div>
+
+        <p><h3>Mouse <a href="/glossaire/mouse">(description)</a></h3></p>
+        <div>
+            <input type="radio" id="mouse1" name="mouse" value="tropro">
+            <label for="mouse1"><u>{{(choix['mouse'])[0].prix}}</u> - {{(choix['mouse'])[0].description}}
+            <a href="{{(choix['mouse'])[0].lien}}">[voir]</a></label>
+            <br>
+            <input type="radio" id="mouse2" name="mouse" value="corsair">
+            <label for="mouse2"><u>{{(choix['mouse'])[1].prix}}</u> - {{(choix['mouse'])[1].description}}
+            <a href="{{(choix['mouse'])[1].lien}}">[voir]</a></label>
+            <br>
+            <input type="radio" id="mouse3" name="mouse" value="logitech">
+            <label for="mouse3"><u>{{(choix['mouse'])[2].prix}}</u> - {{(choix['mouse'])[2].description}}
+            <a href="{{(choix['mouse'])[2].lien}}">[voir]</a></label>
+        </div>
+
+        <p><h3>Monitor <a href="/glossaire/monitor">(description)</a></h3></p>
+        <div>
+            <input type="radio" id="monitor1" name="monitor" value="msi">
+            <label for="monitor1"><u>{{(choix['monitor'])[0].prix}}</u> - {{(choix['monitor'])[0].description}}
+            <a href="{{(choix['monitor'])[0].lien}}">[voir]</a></label>
+            <br>
+            <input type="radio" id="monitor2" name="monitor" value="gigabyte">
+            <label for="monitor2"><u>{{(choix['monitor'])[1].prix}}</u> - {{(choix['monitor'])[1].description}}
+            <a href="{{(choix['monitor'])[1].lien}}">[voir]</a></label>
+        </div>
+        <p>
+            Pour ajouter la livraison, entrez votre code postal :
+            <input type="text" name="postalcode">
+            <br><br>
+            <button type="submit">Calculer le prix!</button>
+        </p>
+    </form>
+
     <footer>2022 - OrdinaLand</footer>
 </body>
 </html>
