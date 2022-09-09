@@ -54,9 +54,69 @@ def construire():
 
 @app.route("/afficher-ordinateur", methods = ['POST'])
 def afficher():
-    codepostal = request.form['postalcode']
-    monitor = request.form['monitor']
-    return render_template('afficher-ordinateur.html', postalcode = codepostal)
+    order_info = {}
+    cost = []
+
+    order_info['case'] = request.form.get('case')
+    for cases in choix_composantes['case']:
+        if cases.description == order_info['case']:
+            cost.append(cases.prix)
+
+    order_info['motherboard'] = request.form.get('motherboard')
+    for motherboards in choix_composantes['motherboard']:
+        if motherboards.description == order_info['motherboard']:
+            cost.append(motherboards.prix)
+
+    order_info['cpu'] = request.form.get('cpu')
+    for cpus in choix_composantes['cpu']:
+        if cpus.description == order_info['cpu']:
+            cost.append(cpus.prix)
+
+    order_info['storage'] = request.form.get('storage')
+    for storages in choix_composantes['storage']:
+        if storages.description == order_info['storage']:
+            cost.append(storages.prix)
+
+    order_info['cooling'] = request.form.get('cooling')
+    for coolings in choix_composantes['cooling']:
+        if coolings.description == order_info['cooling']:
+            cost.append(coolings.prix)
+
+    order_info['ram'] = request.form.get('ram')
+    for rams in choix_composantes['ram']:
+        if rams.description == order_info['ram']:
+            cost.append(rams.prix)
+
+    order_info['power'] = request.form.get('power')
+    for powers in choix_composantes['power']:
+        if powers.description == order_info['power']:
+            cost.append(powers.prix)
+
+    order_info['keyboard'] = request.form.get('keyboard')
+    for keyboards in choix_composantes['keyboard']:
+        if keyboards.description == order_info['keyboard']:
+            cost.append(keyboards.prix)
+
+    order_info['mouse'] = request.form.get('mouse')
+    for mouses in choix_composantes['mouse']:
+        if mouses.description == order_info['mouse']:
+            cost.append(mouses.prix)
+
+    order_info['monitor'] = request.form.get('monitor')
+    for monitors in choix_composantes['monitor']:
+        if monitors.description == order_info['monitor']:
+            cost.append(monitors.prix)
+
+    order_info['postalcode'] = request.form.get('postalcode')
+    postal_code = request.form.get('postalcode')
+
+    ordi = Ordinateur()
+    ordi.composantes = cost
+
+    return render_template('afficher-ordinateur.html', order = order_info, choix = choix_composantes,
+                           subtotal = ordi.sous_total(), tax = ordi.taxes(ordi.sous_total()),
+                           grand_total = ordi.total(ordi.sous_total(), ordi.taxes(ordi.sous_total()), Ordinateur.livraison(postal_code)),
+                           postalcode = Ordinateur.livraison(postal_code))
 
 
 if __name__ == "__main__":

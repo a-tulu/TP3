@@ -115,22 +115,85 @@ class Ordinateur:
         self.composantes = []
 
     def sous_total(self):
-        # TODO
-        print("TODO: calculer le sous-total en additionnant le prix de toutes les composantes")
+        total = 0
 
-        return 0
+        if self.composantes:
+            for prix in self.composantes:
+                total += prix
 
-    def taxes(self):
-        # TODO
-        print("TODO: calculer 15% du sous-total")
+        total_formatter = ("{:.2f}".format(total))
 
-        return 0
+        return total_formatter
 
-    def total(self):
-        # TODO
-        print("TODO: calculer le sous-total + les taxes")
+    def taxes(self, subtotal):
+        subtotal_float = float(subtotal)
 
-        return 0
+        tax = subtotal_float * 0.15
+        tax_formatter = ("{:.2f}".format(tax))
+
+        return tax_formatter
+
+    def total(self, subtotal, tax, delivery):
+
+
+
+        if delivery != "":
+            print("good")
+            grand_total = float(subtotal) + float(tax) + float(delivery)
+
+            grand_total_formatter = ("{:.2f}".format(grand_total))
+
+        else:
+            grand_total = float(subtotal) + float(tax)
+
+            grand_total_formatter = ("{:.2f}".format(grand_total))
+
+        return grand_total_formatter
+
+    @classmethod
+    def livraison(cls, postal_code):
+        livraison_fee = ""
+
+        debut_acceptable = ["A", "B", "C", "E", "G", "H", "J", "K", "L", "M", "N", "P", "R", "S", "T", "V", "X", "Y"]
+        montreal = ["G", "H", "J"]
+
+        postal_code_strip = postal_code.replace(" ", "")
+
+        if len(postal_code_strip) == 6:
+            format_valide = False
+
+            if postal_code_strip[0].isalpha():
+                if postal_code_strip[1].isdecimal():
+                    if postal_code_strip[2].isalpha():
+                        if postal_code_strip[3].isdecimal():
+                            if postal_code_strip[4].isalpha():
+                                if postal_code_strip[5].isdecimal():
+                                    format_valide = True
+
+            if format_valide:
+                postal_code_maj = ""
+                postal_code_maj += postal_code_strip[0].upper()
+                postal_code_maj += postal_code_strip[1]
+                postal_code_maj += postal_code_strip[2].upper()
+                postal_code_maj += postal_code_strip[3]
+                postal_code_maj += postal_code_strip[4].upper()
+                postal_code_maj += postal_code_strip[5]
+
+                premiere_lettre_valide = False
+                for lettre in debut_acceptable:
+                    if lettre == postal_code_maj[0]:
+                        premiere_lettre_valide = True
+
+                if premiere_lettre_valide:
+                    livraison_fee = 20.99
+                    livraison_fee = "{:.2f}".format(livraison_fee)
+
+                    for lettre_mtl in montreal:
+                        if lettre_mtl == postal_code_maj[0]:
+                            livraison_fee = 12.99
+                            livraison_fee = "{:.2f}".format(livraison_fee)
+
+        return livraison_fee
 
 
 class Composante():

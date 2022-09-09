@@ -10,12 +10,52 @@
     <a href="/blog/1">Blog</a>   <a href="/glossaire">Glossaire</a>   <a href="/contact">Contact</a></header>
     <h1><b>OrdinaLand</b><br><i><u>La</u> référence en matière d'ordinateurs</i></h1>
 
+    <h2>Votre ordinateur</h2>
     <p>
-        AFFICHER ORDINATEUR
-        <br>
-        {{postalcode}}
-        <br>
+    <ul>
+        {% if order['case'] %}
+            <li>{{order['case']}}</li>
+        {% endif %}
+        {% if order['motherboard'] %}
+            <li>{{order['motherboard']}}</li>
+        {% endif %}
+        {% if order['cpu'] %}
+            <li>{{order['cpu']}}</li>
+        {% endif %}
+        {% if order['storage'] %}
+            <li>{{order['storage']}}</li>
+        {% endif %}
+        {% if order['cooling'] %}
+            <li>{{order['cooling']}}</li>
+        {% endif %}
+        {% if order['ram'] %}
+            <li>{{order['ram']}}</li>
+        {% endif %}
+        {% if order['power'] %}
+            <li>{{order['power']}}</li>
+        {% endif %}
+        {% if order['keyboard'] %}
+            <li>{{order['keyboard']}}</li>
+        {% endif %}
+        {% if order['mouse'] %}
+            <li>{{order['mouse']}}</li>
+        {% endif %}
+        {% if order['monitor'] %}
+            <li>{{order['monitor']}}</li>
+        {% endif %}
+    </ul>
     </p>
+
+    <p>
+        Sous-total : {{subtotal}}$
+        <br><br>
+        Taxes : {{tax}}$
+        <br><br>
+        {% if postalcode %}
+            Livraison : {{postalcode}}$
+        {% endif %}
+    </p>
+    <h3>Total : {{grand_total}}$</h3>
 
     <footer>2022 - OrdinaLand</footer>
 </body>
