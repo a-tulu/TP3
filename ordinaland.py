@@ -8,38 +8,60 @@ class Definition:
         self.source = source
 
     def termes_relies(self):
+
         text = self.texte
+
+        # On convertit un texte en un tableau de mots ('text_split') en strippant les sauts de lignes et ensuite en
+        # splittant le texte à partir des espaces.
         text_strip = text.strip("\n")
         text_split = text_strip.split(" ")
 
-        nouv_text_split = []
+        # Ce tableau est crée pour contenir tous les mots dans 'text_split' sans les charactères non-alphabétiques.
+        text_split_sans_ponctuation = []
+
         for mot in text_split:
-            nouv_mot = ""
+            nouveau_mot = ""
+            # On examine chaque charactère d'un mot, seulement si le charactère est une lettre on l'append au string
+            # vide 'nouveau_mot'.
             for lettres in mot:
                 if lettres.isalpha():
-                    nouv_mot += lettres
+                    nouveau_mot += lettres
 
-            pet_mot = nouv_mot.lower()
-            nouv_text_split.append(pet_mot)
+            # On convertir le nouveau_mot en lowercase.
+            nouveau_mot_lowercase = nouveau_mot.lower()
 
-        tab_terme = []
+            # On append le nouveau_mot_lowercase dans le tableau 'text_split_sans_ponctuation' et on recommence le
+            # processus tant qu'on n'a pas parcouru tous les mots du tableau 'text_split'.
+            text_split_sans_ponctuation.append(nouveau_mot_lowercase)
+
+        # On va ajouter les termes du glossaire dans ce tableau.
+        termes_glossaire = []
         for objet in glossaire:
-            tab_terme.append(objet.terme)
+            termes_glossaire.append(objet.terme)
 
-        tab_trouve = []
-        for ob in nouv_text_split:
-            increm = 0
+        # Ce tableau va contenir tous les termes dans le glossaire que l'on peut trouver dans le texte (les termes
+        # reliés).
+        termes_relies = []
 
-            for ob2 in tab_terme:
-                if (ob2 == ob) and (ob != self.terme):
-                    for mot_deja_place in tab_trouve:
-                        if mot_deja_place == ob2:
-                            increm += 1
-                    if increm == 0:
-                        tab_trouve.append(ob2)
+        # Pour chaque mot du texte on va comparer chaque mot du glossaire pour voir s'il y a un match.
+        for mot_du_text in text_split_sans_ponctuation:
+            ajout_au_tableau = 0
 
+            for mot_du_glossaire in termes_glossaire:
+                # Si on trouve un match et que le mot_du_text n'est pas égale au terme lui même (le mot principal de la
+                # page definition.html, on va ensuite vérifier que l'on ne la pas déjà placé dans le tableau
+                # 'termes_relies'.
+                if (mot_du_glossaire == mot_du_text) and (mot_du_text != self.terme):
+                    for mot_deja_place in termes_relies:
+                        # Si on l'a déjà dans le tableau 'termes_relies' on va incrémenter la variable
+                        # 'ajout_au_tableau' de 1 pour qu'on ne puisse pas appender ce mot dans le tableau une deuxième
+                        # fois.
+                        if mot_deja_place == mot_du_glossaire:
+                            ajout_au_tableau += 1
+                    if ajout_au_tableau == 0:
+                        termes_relies.append(mot_du_glossaire)
 
-        return tab_trouve
+        return termes_relies
 
 
 class Article:
@@ -59,55 +81,90 @@ class Article:
 
     def temps_lecture(self):
 
-        texte_stripped = self.texte.replace("\n", " ")
-        texte_split = texte_stripped.split(" ")
+        # On convertit un texte en un tableau de mots ('text_split') en remplacant les sauts de lignes par des espaces
+        # et ensuite en splittant le texte à partir des espaces.
+        text_sans_n = self.texte.replace("\n", " ")
+        text_split = text_sans_n.split(" ")
 
         nb_mots = 0
-        for mot in texte_split:
+        for mot in text_split:
             if mot != "":
+                # Si le mot contient une apostrophe, on le compte comme deux mots.
                 if "'" in mot:
                     nb_mots += 2
                 else:
                     nb_mots += 1
 
+        # (Multiplication par fraction)
+        # 200 mots / 60 secondes = nb_mots / X secondes
+        # La division entière est utilisé car on exprime le nombre de secondes en entiers.
         nb_secondes = (nb_mots * 60) // 200
 
         return nb_secondes
 
     @classmethod
     def lire_deux_paragraphes(cls):
-        articles_selectionners = len(articles)
+        longeur_du_tableau_articles = len(articles)
 
-        articles_variables = []
+        # Ce tableau va contenir le titre et les deux premiers paragraphes du texte pour chaque mot du glossaire.
+        # On va retourner ce tableau à la fin de cette méthode.
+        titre_et_deux_paragraphes = []
 
-        for nb_article in range(articles_selectionners):
+        for nb_article in range(longeur_du_tableau_articles):
+            # On sépare les paragraphes en utilisant la méthode 'tableau_paragraphes'
+            # et 'article_split' devient un tableau.
+            article_split = articles[nb_article].tableau_paragraphes()
 
-            article = articles[nb_article].texte
-            article_split = article.split("\n\n")
+            # Ce tableau va contenir chaque paragraphe du tableau 'article_split' une fois qu'on a retirer les
+            # paragraphes vides.
+            tableau_article_sans_vide = []
 
-            tableau_article = []
             for paragraphe in range(len(article_split)):
+                # On retire les paragraphes vides.
                 if article_split[paragraphe] != "":
-                    tableau_article.append(article_split[paragraphe])
+                    tableau_article_sans_vide.append(article_split[paragraphe])
 
+            # Ce tableau va contenir chaque paragraphe du tableau 'tableau_article_sans_vide' une fois qu'on a retirer
+            # les '/n'.
             tableau_article_sans_n = []
-            for texte in range(len(tableau_article)):
-                texte_sans_n = tableau_article[texte].replace("\n", " ")
+
+            for texte in range(len(tableau_article_sans_vide)):
+                # On retire les '/n'.
+                texte_sans_n = tableau_article_sans_vide[texte].replace("\n", " ")
                 tableau_article_sans_n.append(texte_sans_n)
 
-            articles_variables.append(articles[nb_article].titre)
+            # On ajoute le titre de chaque article dans le tableau 'titre_et_deux_paragraphes' que l'on vat retourner à
+            # la fin.
+            titre_et_deux_paragraphes.append(articles[nb_article].titre)
 
+            tableau_paragraphes = []
             if len(tableau_article_sans_n) >= 2:
-                string_deux_paragraphes = tableau_article_sans_n[0] + "\n\n" + tableau_article_sans_n[1]
-                articles_variables.append(string_deux_paragraphes)
+                tableau_paragraphes.append(tableau_article_sans_n[0])
+                tableau_paragraphes.append(tableau_article_sans_n[1])
             else:
-                articles_variables.append(tableau_article_sans_n[0])
+                # Si le texte ne contient qu'un seul paragraphe, on append dans le tableau 'titre_et_deux_paragraphes'
+                # un espace vide à la place d'un deuxième paragraphe.
+                tableau_paragraphes.append(tableau_article_sans_n[0])
 
+            titre_et_deux_paragraphes.append(tableau_paragraphes)
 
+        return titre_et_deux_paragraphes
 
-        return articles_variables
+    @classmethod
+    def lire_texte_entier(cls):
 
+        # On sépare les paragraphes en utilisant la méthode 'tableau_paragraphes'
+        # et 'text_strip' devient un tableau.
+        text_strip = Article.tableau_paragraphes(articles[4])
 
+        # Ce tableau va contenir chaque paragraphe du tableau 'text_strip' une fois qu'on a retirer les paragraphes
+        # vides.
+        tab_paragraphes = []
+        for paragraphe in text_strip:
+            if paragraphe != "":
+                tab_paragraphes.append(paragraphe)
+
+        return tab_paragraphes
 
 
 class Ordinateur:
@@ -117,28 +174,38 @@ class Ordinateur:
     def sous_total(self):
         total = 0
 
+        # Si le client a sélectionné des composantes à acheter, le prix de ces composantes (se trouvant dans le
+        # tableau 'self.composantes' vont être accumulées dans la variable 'total'. Si le tableau est vide, le
+        # sous-total restera 0$.
         if self.composantes:
             for prix in self.composantes:
                 total += prix
 
+        # Le total est formatter pour contenir deux nombres après le point décimal.
         total_formatter = ("{:.2f}".format(total))
 
         return total_formatter
 
     def taxes(self, subtotal):
+
+        # On doit convertir le sous-total en format float car lorsqu'on a formatter le total dans la méthode
+        # 'sous_total', la variable est devenu un string.
         subtotal_float = float(subtotal)
 
         tax = subtotal_float * 0.15
+
+        # La tax est formatter pour contenir deux nombres après le point décimal.
         tax_formatter = ("{:.2f}".format(tax))
 
         return tax_formatter
 
     def total(self, subtotal, tax, delivery):
 
-
-
         if delivery != "":
-            print("good")
+            # Si un code postal valide a été entrée lors de la commande.
+
+            # On doit convertir le 'subtotal', 'tax' et 'delivery' en format float car lorsqu'on les a formatter,
+            # chacun dans sa méthode, ces variables sont devenus sont devenu des strings.
             grand_total = float(subtotal) + float(tax) + float(delivery)
 
             grand_total_formatter = ("{:.2f}".format(grand_total))
@@ -157,39 +224,56 @@ class Ordinateur:
         debut_acceptable = ["A", "B", "C", "E", "G", "H", "J", "K", "L", "M", "N", "P", "R", "S", "T", "V", "X", "Y"]
         montreal = ["G", "H", "J"]
 
+        # On strip les espaces du code postal car on les ignore.
         postal_code_strip = postal_code.replace(" ", "")
 
+        # Vérification que la longueur du code postal soit exactement six charactères.
         if len(postal_code_strip) == 6:
             format_valide = False
 
+            # Vérification que le premier charactère est une lettre.
             if postal_code_strip[0].isalpha():
+                # Vérification que le deuxième charactère est un nombre.
                 if postal_code_strip[1].isdecimal():
+                    # Vérification que le troisième charactère est une lettre.
                     if postal_code_strip[2].isalpha():
+                        # Vérification que le quatrième charactère est un nombre.
                         if postal_code_strip[3].isdecimal():
+                            # Vérification que le cinquième charactère est une lettre.
                             if postal_code_strip[4].isalpha():
+                                # Vérification que le sixième charactère est un nombre.
                                 if postal_code_strip[5].isdecimal():
+                                    # Si tout ces conditions sont remplies, on indique que le format est valide et on
+                                    # passe à la prochaine inspection du code postal.
                                     format_valide = True
 
+            # On va convertir toutes les lettre du code postal en majuscules et insérer chaque charactère dans une
+            # nouvelle variable 'postal_code_majuscule'. Ceci va aider pour la vérification de la validité de la
+            # première lettre et pour l'uniformité.
             if format_valide:
-                postal_code_maj = ""
-                postal_code_maj += postal_code_strip[0].upper()
-                postal_code_maj += postal_code_strip[1]
-                postal_code_maj += postal_code_strip[2].upper()
-                postal_code_maj += postal_code_strip[3]
-                postal_code_maj += postal_code_strip[4].upper()
-                postal_code_maj += postal_code_strip[5]
+                postal_code_majuscule = ""
+                postal_code_majuscule += postal_code_strip[0].upper()
+                postal_code_majuscule += postal_code_strip[1]
+                postal_code_majuscule += postal_code_strip[2].upper()
+                postal_code_majuscule += postal_code_strip[3]
+                postal_code_majuscule += postal_code_strip[4].upper()
+                postal_code_majuscule += postal_code_strip[5]
 
                 premiere_lettre_valide = False
+                # On vérifie la première lettre contre tous les entrées du tableau 'debut_acceptable'. Si on trouve un
+                # match, la variable 'premiere_lettre_valide' est mis à True et on passe au coût de livraison.
                 for lettre in debut_acceptable:
-                    if lettre == postal_code_maj[0]:
+                    if lettre == postal_code_majuscule[0]:
                         premiere_lettre_valide = True
 
                 if premiere_lettre_valide:
                     livraison_fee = 20.99
                     livraison_fee = "{:.2f}".format(livraison_fee)
 
+                    # On compare la première lettre contre tous les entrées du tableau 'montreal'. Si on trouve un match
+                    # on change le prix de livraison à 12.99$, sinon il reste à 20.99$.
                     for lettre_mtl in montreal:
-                        if lettre_mtl == postal_code_maj[0]:
+                        if lettre_mtl == postal_code_majuscule[0]:
                             livraison_fee = 12.99
                             livraison_fee = "{:.2f}".format(livraison_fee)
 

@@ -6,43 +6,67 @@ from ordinaland import *
 
 @app.route("/")
 def index():
-    articles_variables = Article.lire_deux_paragraphes()
-    return render_template('index.html', var0 = articles_variables[0], var1 = articles_variables[1], id_1 = 0,
-                           var2 = articles_variables[2], var3 = articles_variables[3], id_2 = 1,
-                           var4 = articles_variables[4], var5 = articles_variables[5], id_3 = 2)
+
+    tableau_deux_paragraphes = Article.lire_deux_paragraphes()
+
+    # Les variables 'id_x' servent à identifier les articles selectionners à en faire un aperçu à partir de leur
+    # numéro d'indice.
+    return render_template('index.html', id_1 = 0, titre_1 = tableau_deux_paragraphes[0],
+                           pg_1 = tableau_deux_paragraphes[1], id_2 = 1, titre_2 = tableau_deux_paragraphes[2],
+                           pg_2 = tableau_deux_paragraphes[3], id_3 = 2, titre_3 = tableau_deux_paragraphes[4],
+                           pg_3 = tableau_deux_paragraphes[5])
 
 @app.route("/blog/<id>")
 def blog(id):
-    nb_articles = len(articles)
-    nb_pages = nb_articles // 3
-    if nb_pages != 0:
-        nb_pages += 1
-    id_int = int(id)
-    tableau_titre = []
-    for art in articles:
-        tableau_titre.append(art.titre)
 
-    return render_template('blog.html', var0 = nb_pages, var1 = id_int, var2 = Article.lire_deux_paragraphes(),
-                               var3 = len(Article.lire_deux_paragraphes()), tab_titres = tableau_titre)
+    nb_articles = len(articles)
+
+    # On afficher seulement trois articles par page.
+    nb_pages = nb_articles // 3
+
+    # Si le nombre d'articles n'est pas entièrement divisble par trois, on ajoute une page au compte total de pages.
+    if (nb_articles % 3) != 0:
+        nb_pages += 1
+
+    id_int = int(id)
+
+    # Création d'un tableau de titres pour tous les articles dans le tableau 'articles' pour faciliter son affichage
+    # sur la page blog.html.
+    tableau_titre = []
+    for item in articles:
+        tableau_titre.append(item.titre)
+
+    if id_int <= nb_pages:
+        return render_template('blog.html', nb_total_pages = nb_pages, page = id_int,
+                               tab_deux_pg = Article.lire_deux_paragraphes(),
+                               long_tab_deux_pg = len(Article.lire_deux_paragraphes()), tab_titres = tableau_titre)
 
 @app.route("/article/<id>")
 def article(id):
+
     id_int = int(id)
-    return render_template('article.html', titres = articles[id_int].titre, date = articles[id_int].date,
-                           temps = Article.temps_lecture(articles[id_int]), image = articles[id_int].image,
-                           texte = articles[id_int].texte, id = id_int, articles = len(articles), tableau = articles)
+
+    return render_template('article.html', titre = articles[id_int].titre, date = articles[id_int].date,
+                           temps_de_lecture = Article.temps_lecture(articles[id_int]), image = articles[id_int].image,
+                           texte = Article.tableau_paragraphes(articles[id_int]),
+                           id = id_int, long_tab_articles = len(articles), tab_articles = articles)
 
 @app.route("/glossaire")
 def glossaires():
-    return render_template('glossaire.html', glos = glossaire)
+    return render_template('glossaire.html', glossaire = glossaire)
 
 @app.route("/glossaire/<id>")
 def definition(id):
-    for objet in glossaire:
-        if id == objet.terme:
-            place = glossaire.index(objet)
-    return render_template('definition.html', mot = id, glos = glossaire, place = place,
-                           relie = Definition.termes_relies(glossaire[place]))
+
+    # Vérification que le mot ('id') entré en paramètre est dans le glossaire.
+    for item in glossaire:
+        if id == item.terme:
+            # Si le mot est trouvé dans le glossaire, on garde son index dans le tableau à l'intérieur de la variable
+            # 'place' pour pouvoir le retrouver plus facilement dans le glossaire une fois dans la page definition.html.
+            place = glossaire.index(item)
+
+    return render_template('definition.html', mot = id, glossaire = glossaire, place = place,
+                           termes_relies = Definition.termes_relies(glossaire[place]))
 
 @app.route("/contact")
 def contact():

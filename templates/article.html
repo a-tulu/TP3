@@ -5,27 +5,41 @@
     <title>Article</title>
     <link rel="stylesheet" href="/static/style.css"/>
 </head>
+
+<header>
+    <p>OrdinaLand   <a href="/">Accueil</a>   <a href="/construire">Construire un ordinateur</a>
+        <a href="/blog/1">Blog</a>   <a href="/glossaire">Glossaire</a>   <a href="/contact">Contact</a>
+    </p>
+</header>
+
 <body>
-    <header>OrdinaLand   <a href="/">Accueil</a>   <a href="/construire">Construire un ordinateur</a>
-    <a href="/blog/1">Blog</a>   <a href="/glossaire">Glossaire</a>   <a href="/contact">Contact</a></header>
     <h1><b>OrdinaLand</b><br><i><u>La</u> référence en matière d'ordinateurs</i></h1>
 
-    <h2><b>{{titres}} publié le {{date}}</b></h2>
-    <p>Temps de lecture : {{temps}} secondes</p>
+    <h2><b>{{titre}} publié le {{date}}</b></h2>
+
+    <p>Temps de lecture : {{temps_de_lecture}} secondes</p>
+
     <p><img src="/static/{{image}}" alt="{{image}}" /></p>
-    <p><pre>{{texte}}</pre></p>
+
+    <p> {% for pg in texte %}
+            <br><br> {{pg}}
+        {% endfor %}
+    </p>
 
     <h2>Plus d'articles...</h2>
 
-    {% if id == (articles - 1) %}
-        <p><a href="/article/{{id - 1}}"><<< {{tableau[id - 1].titre}}</a></p>
+    {% if id == (long_tab_articles - 1) %}
+        <p><a href="/article/{{id - 1}}"><<< {{tab_articles[id - 1].titre}}</a></p>
+
     {% elif id == 0 %}
-        <p><a href="/article/{{id + 1}}">{{tableau[id + 1].titre}} >>></a></p>
+        <p><a href="/article/{{id + 1}}">{{tab_articles[id + 1].titre}} >>></a></p>
+
     {% else %}
-        <p><a href="/article/{{id - 1}}"><<< {{tableau[id - 1].titre}}</a><br><br>
-            <a href="/article/{{id + 1}}">{{tableau[id + 1].titre}} >>></a></p>
+        <p><a href="/article/{{id - 1}}"><<< {{tab_articles[id - 1].titre}}</a><br><br>
+            <a href="/article/{{id + 1}}">{{tab_articles[id + 1].titre}} >>></a></p>
     {% endif %}
 
     <footer>2022 - OrdinaLand</footer>
 </body>
+
 </html>

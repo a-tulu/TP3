@@ -5,16 +5,24 @@
     <title>Glossaire</title>
     <link rel="stylesheet" href="/static/style.css"/>
 </head>
+
+<header>
+    <p>OrdinaLand   <a href="/">Accueil</a>   <a href="/construire">Construire un ordinateur</a>
+        <a href="/blog/1">Blog</a>   <a href="/glossaire">Glossaire</a>   <a href="/contact">Contact</a>
+    </p>
+</header>
+
 <body>
-    <header>OrdinaLand   <a href="/">Accueil</a>   <a href="/construire">Construire un ordinateur</a>
-    <a href="/blog/1">Blog</a>   <a href="/glossaire">Glossaire</a>   <a href="/contact">Contact</a></header>
     <h1><b>OrdinaLand</b><br><i><u>La</u> référence en matière d'ordinateurs</i></h1>
+
     <h2><b>Glossaire</b></h2>
     <p>
-    {% for objet in glos %}
+    {% for objet in glossaire %}
         <a href="/glossaire/{{objet.terme}}">{{objet.terme}}</a><br>
     {% endfor %}
     </p>
+
     <footer>2022 - OrdinaLand</footer>
 </body>
+
 </html>
