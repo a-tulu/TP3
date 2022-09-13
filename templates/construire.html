@@ -22,141 +22,104 @@
     <form method="post" action="/afficher-ordinateur">
         <p><h3>Case <a href="/glossaire/case">(description)</a></h3></p>
         <div>
-            <input type="radio" id="case1" name="case" value="{{(choix['case'])[0].description}}">
-            <label for="case1"><u>{{(choix['case'])[0].prix}}</u> - {{(choix['case'])[0].description}}
-            <a href="{{(choix['case'])[0].lien}}">[voir]</a></label>
-            <br>
-            <input type="radio" id="case2" name="case" value="{{(choix['case'])[1].description}}">
-            <label for="case2"><u>{{(choix['case'])[1].prix}}</u> - {{(choix['case'])[1].description}}
-            <a href="{{(choix['case'])[1].lien}}">[voir]</a></label>
-            <br>
-            <input type="radio" id="case3" name="case" value="{{(choix['case'])[2].description}}">
-            <label for="case3"><u>{{(choix['case'])[2].prix}}</u> - {{(choix['case'])[2].description}}
-            <a href="{{(choix['case'])[2].lien}}">[voir]</a></label>
+            {% for item_case in choix['case'] %}
+                <input type="radio" id="{{item_case}}" name="case" value="{{item_case.description}}">
+                <label for="{{item_case}}"><u>{{item_case.prix}}</u> - {{item_case.description}}
+                <a href="{{item_case.lien}}">[voir]</a></label>
+                <br>
+            {% endfor %}
         </div>
 
         <p><h3>Motherboard <a href="/glossaire/motherboard">(description)</a></h3></p>
         <div>
-            <input type="radio" id="motherboard1" name="motherboard" value="{{(choix['motherboard'])[0].description}}">
-            <label for="motherboard1"><u>{{(choix['motherboard'])[0].prix}}</u> - {{(choix['motherboard'])[0].description}}
-            <a href="{{(choix['motherboard'])[0].lien}}">[voir]</a></label>
-            <br>
-            <input type="radio" id="motherboard2" name="motherboard" value="{{(choix['motherboard'])[1].description}}">
-            <label for="motherboard2"><u>{{(choix['motherboard'])[1].prix}}</u> - {{(choix['motherboard'])[1].description}}
-            <a href="{{(choix['motherboard'])[1].lien}}">[voir]</a></label>
+            {% for item_mb in choix['motherboard'] %}
+                <input type="radio" id="{{item_mb}}" name="motherboard" value="{{item_mb.description}}">
+                <label for="{{item_mb}}"><u>{{item_mb.prix}}</u> - {{item_mb.description}}
+                <a href="{{item_mb.lien}}">[voir]</a></label>
+                <br>
+            {% endfor %}
         </div>
 
         <p><h3>Cpu <a href="/glossaire/cpu">(description)</a></h3></p>
         <div>
-            <input type="radio" id="cpu1" name="cpu" value="{{(choix['cpu'])[0].description}}">
-            <label for="cpu1"><u>{{(choix['cpu'])[0].prix}}</u> - {{(choix['cpu'])[0].description}}
-            <a href="{{(choix['cpu'])[0].lien}}">[voir]</a></label>
-            <br>
-            <input type="radio" id="cpu2" name="cpu" value="{{(choix['cpu'])[1].description}}">
-            <label for="cpu2"><u>{{(choix['cpu'])[1].prix}}</u> - {{(choix['cpu'])[1].description}}
-            <a href="{{(choix['cpu'])[1].lien}}">[voir]</a></label>
-            <br>
-            <input type="radio" id="cpu3" name="cpu" value="{{(choix['cpu'])[2].description}}">
-            <label for="cpu3"><u>{{(choix['cpu'])[2].prix}}</u> - {{(choix['cpu'])[2].description}}
-            <a href="{{(choix['cpu'])[2].lien}}">[voir]</a></label>
-            <br>
-            <input type="radio" id="cpu4" name="cpu" value="{{(choix['cpu'])[3].description}}">
-            <label for="cpu4"><u>{{(choix['cpu'])[3].prix}}</u> - {{(choix['cpu'])[3].description}}
-            <a href="{{(choix['cpu'])[3].lien}}">[voir]</a></label>
+            {% for item_cpu in choix['cpu'] %}
+                <input type="radio" id="{{item_cpu}}" name="cpu" value="{{item_cpu.description}}">
+                <label for="{{item_cpu}}"><u>{{item_cpu.prix}}</u> - {{item_cpu.description}}
+                <a href="{{item_cpu.lien}}">[voir]</a></label>
+                <br>
+            {% endfor %}
         </div>
 
         <p><h3>Storage <a href="/glossaire/storage">(description)</a></h3></p>
         <div>
-            <input type="radio" id="storage1" name="storage" value="{{(choix['storage'])[0].description}}">
-            <label for="storage1"><u>{{(choix['storage'])[0].prix}}</u> - {{(choix['storage'])[0].description}}
-            <a href="{{(choix['storage'])[0].lien}}">[voir]</a></label>
-            <br>
-            <input type="radio" id="storage2" name="storage" value="{{(choix['storage'])[1].description}}">
-            <label for="storage2"><u>{{(choix['storage'])[1].prix}}</u> - {{(choix['storage'])[1].description}}
-            <a href="{{(choix['storage'])[1].lien}}">[voir]</a></label>
-            <br>
-            <input type="radio" id="storage3" name="storage" value="{{(choix['storage'])[2].description}}">
-            <label for="storage3"><u>{{(choix['storage'])[2].prix}}</u> - {{(choix['storage'])[2].description}}
-            <a href="{{(choix['storage'])[2].lien}}">[voir]</a></label>
+            {% for item_storage in choix['storage'] %}
+                <input type="radio" id="{{item_storage}}" name="storage" value="{{item_storage.description}}">
+                <label for="{{item_storage}}"><u>{{item_storage.prix}}</u> - {{item_storage.description}}
+                <a href="{{item_storage.lien}}">[voir]</a></label>
+                <br>
+            {% endfor %}
         </div>
 
         <p><h3>Cooling <a href="/glossaire/cooling">(description)</a></h3></p>
         <div>
-            <input type="radio" id="cooling1" name="cooling" value="{{(choix['cooling'])[0].description}}">
-            <label for="cooling1"><u>{{(choix['cooling'])[0].prix}}</u> - {{(choix['cooling'])[0].description}}
-            <a href="{{(choix['cooling'])[0].lien}}">[voir]</a></label>
-            <br>
-            <input type="radio" id="cooling2" name="cooling" value="{{(choix['cooling'])[1].description}}">
-            <label for="cooling2"><u>{{(choix['cooling'])[1].prix}}</u> - {{(choix['cooling'])[1].description}}
-            <a href="{{(choix['cooling'])[1].lien}}">[voir]</a></label>
-            <br>
-            <input type="radio" id="cooling3" name="cooling" value="{{(choix['cooling'])[2].description}}">
-            <label for="cooling3"><u>{{(choix['cooling'])[2].prix}}</u> - {{(choix['cooling'])[2].description}}
-            <a href="{{(choix['cooling'])[2].lien}}">[voir]</a></label>
+             {% for item_cooling in choix['cooling'] %}
+                <input type="radio" id="{{item_cooling}}" name="cooling" value="{{item_cooling.description}}">
+                <label for="{{item_cooling}}"><u>{{item_cooling.prix}}</u> - {{item_cooling.description}}
+                <a href="{{item_cooling.lien}}">[voir]</a></label>
+                <br>
+            {% endfor %}
         </div>
 
         <p><h3>Ram <a href="/glossaire/ram">(description)</a></h3></p>
         <div>
-            <input type="radio" id="ram1" name="ram" value="{{(choix['ram'])[0].description}}">
-            <label for="ram1"><u>{{(choix['ram'])[0].prix}}</u> - {{(choix['ram'])[0].description}}
-            <a href="{{(choix['ram'])[0].lien}}">[voir]</a></label>
-            <br>
-            <input type="radio" id="ram2" name="ram" value="{{(choix['ram'])[1].description}}">
-            <label for="ram2"><u>{{(choix['ram'])[1].prix}}</u> - {{(choix['ram'])[1].description}}
-            <a href="{{(choix['ram'])[1].lien}}">[voir]</a></label>
+            {% for item_ram in choix['ram'] %}
+                <input type="radio" id="{{item_ram}}" name="ram" value="{{item_ram.description}}">
+                <label for="{{item_ram}}"><u>{{item_ram.prix}}</u> - {{item_ram.description}}
+                <a href="{{item_ram.lien}}">[voir]</a></label>
+                <br>
+            {% endfor %}
         </div>
 
         <p><h3>Power <a href="/glossaire/power">(description)</a></h3></p>
         <div>
-            <input type="radio" id="power1" name="power" value="{{(choix['power'])[0].description}}">
-            <label for="power1"><u>{{(choix['power'])[0].prix}}</u> - {{(choix['power'])[0].description}}
-            <a href="{{(choix['power'])[0].lien}}">[voir]</a></label>
-            <br>
-            <input type="radio" id="power2" name="power" value="{{(choix['power'])[1].description}}">
-            <label for="power2"><u>{{(choix['power'])[1].prix}}</u> - {{(choix['power'])[1].description}}
-            <a href="{{(choix['power'])[1].lien}}">[voir]</a></label>
+            {% for item_power in choix['power'] %}
+                <input type="radio" id="{{item_power}}" name="power" value="{{item_power.description}}">
+                <label for="{{item_power}}"><u>{{item_power.prix}}</u> - {{item_power.description}}
+                <a href="{{item_power.lien}}">[voir]</a></label>
+                <br>
+            {% endfor %}
         </div>
 
         <p><h3>Keyboard <a href="/glossaire/keyboard">(description)</a></h3></p>
         <div>
-            <input type="radio" id="keyboard1" name="keyboard" value="{{(choix['keyboard'])[0].description}}">
-            <label for="keyboard1"><u>{{(choix['keyboard'])[0].prix}}</u> - {{(choix['keyboard'])[0].description}}
-            <a href="{{(choix['keyboard'])[0].lien}}">[voir]</a></label>
-            <br>
-            <input type="radio" id="keyboard2" name="keyboard" value="{{(choix['keyboard'])[1].description}}">
-            <label for="keyboard2"><u>{{(choix['keyboard'])[1].prix}}</u> - {{(choix['keyboard'])[1].description}}
-            <a href="{{(choix['keyboard'])[1].lien}}">[voir]</a></label>
-            <br>
-            <input type="radio" id="keyboard3" name="keyboard" value="{{(choix['keyboard'])[2].description}}">
-            <label for="keyboard3"><u>{{(choix['keyboard'])[2].prix}}</u> - {{(choix['keyboard'])[2].description}}
-            <a href="{{(choix['keyboard'])[2].lien}}">[voir]</a></label>
+            {% for item_kb in choix['keyboard'] %}
+                <input type="radio" id="{{item_kb}}" name="keyboard" value="{{item_kb.description}}">
+                <label for="{{item_kb}}"><u>{{item_kb.prix}}</u> - {{item_kb.description}}
+                <a href="{{item_kb.lien}}">[voir]</a></label>
+                <br>
+            {% endfor %}
         </div>
 
         <p><h3>Mouse <a href="/glossaire/mouse">(description)</a></h3></p>
         <div>
-            <input type="radio" id="mouse1" name="mouse" value="{{(choix['mouse'])[0].description}}">
-            <label for="mouse1"><u>{{(choix['mouse'])[0].prix}}</u> - {{(choix['mouse'])[0].description}}
-            <a href="{{(choix['mouse'])[0].lien}}">[voir]</a></label>
-            <br>
-            <input type="radio" id="mouse2" name="mouse" value="{{(choix['mouse'])[1].description}}">
-            <label for="mouse2"><u>{{(choix['mouse'])[1].prix}}</u> - {{(choix['mouse'])[1].description}}
-            <a href="{{(choix['mouse'])[1].lien}}">[voir]</a></label>
-            <br>
-            <input type="radio" id="mouse3" name="mouse" value="{{(choix['mouse'])[2].description}}">
-            <label for="mouse3"><u>{{(choix['mouse'])[2].prix}}</u> - {{(choix['mouse'])[2].description}}
-            <a href="{{(choix['mouse'])[2].lien}}">[voir]</a></label>
+            {% for item_mouse in choix['mouse'] %}
+                <input type="radio" id="{{item_mouse}}" name="mouse" value="{{item_mouse.description}}">
+                <label for="{{item_mouse}}"><u>{{item_mouse.prix}}</u> - {{item_mouse.description}}
+                <a href="{{item_mouse.lien}}">[voir]</a></label>
+                <br>
+            {% endfor %}
         </div>
 
         <p><h3>Monitor <a href="/glossaire/monitor">(description)</a></h3></p>
         <div>
-            <input type="radio" id="monitor1" name="monitor" value="{{(choix['monitor'])[0].description}}">
-            <label for="monitor1"><u>{{(choix['monitor'])[0].prix}}</u> - {{(choix['monitor'])[0].description}}
-            <a href="{{(choix['monitor'])[0].lien}}">[voir]</a></label>
-            <br>
-            <input type="radio" id="monitor2" name="monitor" value="{{(choix['monitor'])[1].description}}">
-            <label for="monitor2"><u>{{(choix['monitor'])[1].prix}}</u> - {{(choix['monitor'])[1].description}}
-            <a href="{{(choix['monitor'])[1].lien}}">[voir]</a></label>
+            {% for item_monitor in choix['monitor'] %}
+                <input type="radio" id="{{item_monitor}}" name="monitor" value="{{item_monitor.description}}">
+                <label for="{{item_monitor}}"><u>{{item_monitor.prix}}</u> - {{item_monitor.description}}
+                <a href="{{item_monitor.lien}}">[voir]</a></label>
+                <br>
+            {% endfor %}
         </div>
+
         <p>
             Pour ajouter la livraison, entrez votre code postal :
             <input type="text" name="postalcode">

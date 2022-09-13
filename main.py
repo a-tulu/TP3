@@ -78,62 +78,27 @@ def construire():
 
 @app.route("/afficher-ordinateur", methods = ['POST'])
 def afficher():
+
+    # Ce dictionnaire va contenir tous les informations remplis dans le formulaire de la page construire.html. Les clés
+    # vont être le nom des composantes.
     order_info = {}
+    # Ce tableau va contenir le prix des composantes selectionnés.
     cost = []
+    composants = ['case', 'motherboard', 'cpu', 'storage', 'cooling', 'ram', 'power', 'keyboard', 'mouse', 'monitor']
 
-    order_info['case'] = request.form.get('case')
-    for cases in choix_composantes['case']:
-        if cases.description == order_info['case']:
-            cost.append(cases.prix)
+    for composant in composants:
+        order_info[composant] = request.form.get(composant)
 
-    order_info['motherboard'] = request.form.get('motherboard')
-    for motherboards in choix_composantes['motherboard']:
-        if motherboards.description == order_info['motherboard']:
-            cost.append(motherboards.prix)
-
-    order_info['cpu'] = request.form.get('cpu')
-    for cpus in choix_composantes['cpu']:
-        if cpus.description == order_info['cpu']:
-            cost.append(cpus.prix)
-
-    order_info['storage'] = request.form.get('storage')
-    for storages in choix_composantes['storage']:
-        if storages.description == order_info['storage']:
-            cost.append(storages.prix)
-
-    order_info['cooling'] = request.form.get('cooling')
-    for coolings in choix_composantes['cooling']:
-        if coolings.description == order_info['cooling']:
-            cost.append(coolings.prix)
-
-    order_info['ram'] = request.form.get('ram')
-    for rams in choix_composantes['ram']:
-        if rams.description == order_info['ram']:
-            cost.append(rams.prix)
-
-    order_info['power'] = request.form.get('power')
-    for powers in choix_composantes['power']:
-        if powers.description == order_info['power']:
-            cost.append(powers.prix)
-
-    order_info['keyboard'] = request.form.get('keyboard')
-    for keyboards in choix_composantes['keyboard']:
-        if keyboards.description == order_info['keyboard']:
-            cost.append(keyboards.prix)
-
-    order_info['mouse'] = request.form.get('mouse')
-    for mouses in choix_composantes['mouse']:
-        if mouses.description == order_info['mouse']:
-            cost.append(mouses.prix)
-
-    order_info['monitor'] = request.form.get('monitor')
-    for monitors in choix_composantes['monitor']:
-        if monitors.description == order_info['monitor']:
-            cost.append(monitors.prix)
+        for objet in choix_composantes[composant]:
+            # Si un type de composant est selectionner dans la commande, son coût est appendé dans le tableau cost.
+            if objet.description == order_info[composant]:
+                cost.append(objet.prix)
 
     order_info['postalcode'] = request.form.get('postalcode')
     postal_code = request.form.get('postalcode')
 
+    # Initialisation d'un objet de la classe Ordinateur. À la place d'ajouter le nom des composantes dans le tableau,
+    # j'ai opté pour y mettre les prix des composantes (contenu dans le tableau 'cost').
     ordi = Ordinateur()
     ordi.composantes = cost
 
