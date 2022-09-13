@@ -1,14 +1,35 @@
 header {
     background-color: #8a1e05;
     color: white;
-    padding-bottom: 15px;
-    padding-top: 15px;
     font-family: sans-serif;
+    padding: 8px;
 }
 
 .header {
     padding-left: 40px;
+    padding-right: 40px;
+}
+
+.header-lien {
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #640707;
+    padding-top: 32px;
+    padding-bottom: 24px;
+    border-left-color: #8a1e05;
+    border-left-width: 5px;
+    border-left-style: solid;
+    border-right-color: #8a1e05;
+    border-right-style: solid;
+    border-right-width: 5px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
 }
 
 
-
+body {
+    margin: 0;
+}
