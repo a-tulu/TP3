@@ -22,14 +22,51 @@ header {
     border-right-color: #8a1e05;
     border-right-style: solid;
     border-right-width: 5px;
-}
-
-a {
     color: white;
     text-decoration: none;
 }
 
-
 body {
     margin: 0;
+}
+
+footer {
+    background-color: #f9afbc;
+    text-align: center;
+    padding: 1px;
+    color: #574e4e;
+}
+
+
+.beforefooter {
+    padding-bottom: 177px;
+}
+
+.beforefooter-blog {
+    padding-bottom: 201px;
+}
+
+.beforefooter-glossaire {
+    padding-bottom: 404px;
+}
+
+.beforefooter-contact {
+    padding-bottom: 115px;
+}
+
+.beforefooter-definition {
+    padding-bottom: 383px;
+}
+
+h1 {
+    background-color: #f9afbc;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 28px;
+    line-height: 28px;
+}
+
+span.h1 {
+    color: #4d4d4d;
+    font-size: 22px;
 }
