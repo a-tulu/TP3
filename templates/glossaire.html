@@ -15,12 +15,13 @@
 <body>
     <h1>OrdinaLand<br><span class="h1"><i><u>La</u> référence en matière d'ordinateurs</i></span></h1>
 
-    <h2><b>Glossaire</b></h2>
-    <p>
+    <h3>Glossaire</h3>
+    <ul>
     {% for objet in glossaire %}
-        <a href="/glossaire/{{objet.terme}}">{{objet.terme}}</a><br>
+        <li class="glossaire-mots"><a href="/glossaire/{{objet.terme}}">{{objet.terme}}</a></li>
     {% endfor %}
-    </p>
+    </ul>
+
     <p class="beforefooter-glossaire"></p>
 </body>
 

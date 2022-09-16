@@ -15,21 +15,26 @@
 <body>
     <h1>OrdinaLand<br><span class="h1"><i><u>La</u> référence en matière d'ordinateurs</i></span></h1>
 
-    <h2><b>Définition : {{mot}}</b></h2>
+    <h3>Définition : {{mot}}</h3>
 
+    <div class="paragraphe-format">
     <p>{{glossaire[place].texte}}</p>
 
-    <p>Source : <a href="{{glossaire[place].source}}">{{glossaire[place].source}}</a></p>
+    <p>Source : <a href="{{glossaire[place].source}}">{{glossaire[place].source}}</a></p></div>
 
-    <h3><b>Mots reliés</b></h3>
+    <h3>Mots reliés</h3>
 
     <p>
+        <ul class="glossaire-mots">
         {% for item in termes_relies %}
-        <a href="/glossaire/{{item}}">{{item}}</a><br>
+        <li><a href="/glossaire/{{item}}">{{item}}</a><br></li>
         {% endfor %}
         <br>
-        <a href="/glossaire">Retour au Glossaire</a>
+        </ul>
+        <span class="paragraphe-format">
+        <a href="/glossaire">Retour au Glossaire</a></span>
     </p>
+
     <p class="beforefooter-definition"></p>
 </body>
 

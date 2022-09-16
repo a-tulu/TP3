@@ -15,116 +15,122 @@
 <body>
     <h1>OrdinaLand<br><span class="h1"><i><u>La</u> référence en matière d'ordinateurs</i></span></h1>
 
-    <h2><b>Monter votre ordinateur</b></h2>
+    <h3>Monter votre ordinateur</h3>
 
-    <p>Cette page sert d'assistant pour choisir les composantes de votre futur ordinateur</p>
+    <div class="paragraphe-format">
+    <p>Cette page sert d'assistant pour choisir les composantes de votre futur ordinateur</p></div>
 
     <form method="post" action="/afficher-ordinateur">
-        <p><h3>Case <a href="/glossaire/case">(description)</a></h3></p>
-        <div>
+        <p><h3 class="computer">Case <span class="small-link"><a href="/glossaire/case">(description)</a></span></h3>
+        <div class="paragraphe-ordinateur">
             {% for item_case in choix['case'] %}
                 <input type="radio" id="{{item_case}}" name="case" value="{{item_case.description}}">
                 <label for="{{item_case}}"><u>{{item_case.prix}}</u> - {{item_case.description}}
                 <a href="{{item_case.lien}}">[voir]</a></label>
                 <br>
             {% endfor %}
-        </div>
+        </div></p>
 
-        <p><h3>Motherboard <a href="/glossaire/motherboard">(description)</a></h3></p>
-        <div>
+        <p><h3 class="computer">Motherboard <span class="small-link"><a href="/glossaire/motherboard">(description)</a></span></h3>
+        <div class="paragraphe-ordinateur">
             {% for item_mb in choix['motherboard'] %}
                 <input type="radio" id="{{item_mb}}" name="motherboard" value="{{item_mb.description}}">
                 <label for="{{item_mb}}"><u>{{item_mb.prix}}</u> - {{item_mb.description}}
                 <a href="{{item_mb.lien}}">[voir]</a></label>
                 <br>
             {% endfor %}
-        </div>
+        </div></p>
 
-        <p><h3>Cpu <a href="/glossaire/cpu">(description)</a></h3></p>
-        <div>
+        <p><h3 class="computer">Cpu <span class="small-link"><a href="/glossaire/cpu">(description)</a></span></h3>
+        <div class="paragraphe-ordinateur">
             {% for item_cpu in choix['cpu'] %}
                 <input type="radio" id="{{item_cpu}}" name="cpu" value="{{item_cpu.description}}">
                 <label for="{{item_cpu}}"><u>{{item_cpu.prix}}</u> - {{item_cpu.description}}
                 <a href="{{item_cpu.lien}}">[voir]</a></label>
                 <br>
             {% endfor %}
-        </div>
+        </div></p>
 
-        <p><h3>Storage <a href="/glossaire/storage">(description)</a></h3></p>
-        <div>
+        <p><h3 class="computer">Storage <span class="small-link"><a href="/glossaire/storage">(description)</a></span></h3>
+        <div class="paragraphe-ordinateur">
             {% for item_storage in choix['storage'] %}
                 <input type="radio" id="{{item_storage}}" name="storage" value="{{item_storage.description}}">
                 <label for="{{item_storage}}"><u>{{item_storage.prix}}</u> - {{item_storage.description}}
                 <a href="{{item_storage.lien}}">[voir]</a></label>
                 <br>
             {% endfor %}
-        </div>
+        </div></p>
 
-        <p><h3>Cooling <a href="/glossaire/cooling">(description)</a></h3></p>
-        <div>
+        <p><h3 class="computer">Cooling <span class="small-link"><a href="/glossaire/cooling">(description)</a></span></h3>
+        <div class="paragraphe-ordinateur">
              {% for item_cooling in choix['cooling'] %}
                 <input type="radio" id="{{item_cooling}}" name="cooling" value="{{item_cooling.description}}">
                 <label for="{{item_cooling}}"><u>{{item_cooling.prix}}</u> - {{item_cooling.description}}
                 <a href="{{item_cooling.lien}}">[voir]</a></label>
                 <br>
             {% endfor %}
-        </div>
+        </div></p>
 
-        <p><h3>Ram <a href="/glossaire/ram">(description)</a></h3></p>
-        <div>
+        <p><h3 class="computer">Ram <span class="small-link"><a href="/glossaire/ram">(description)</a></span></h3>
+        <div class="paragraphe-ordinateur">
             {% for item_ram in choix['ram'] %}
                 <input type="radio" id="{{item_ram}}" name="ram" value="{{item_ram.description}}">
                 <label for="{{item_ram}}"><u>{{item_ram.prix}}</u> - {{item_ram.description}}
                 <a href="{{item_ram.lien}}">[voir]</a></label>
                 <br>
             {% endfor %}
-        </div>
+        </div></p>
 
-        <p><h3>Power <a href="/glossaire/power">(description)</a></h3></p>
-        <div>
+        <p><h3 class="computer">Power <span class="small-link"><a href="/glossaire/power">(description)</a></span></h3>
+        <div class="paragraphe-ordinateur">
             {% for item_power in choix['power'] %}
                 <input type="radio" id="{{item_power}}" name="power" value="{{item_power.description}}">
                 <label for="{{item_power}}"><u>{{item_power.prix}}</u> - {{item_power.description}}
                 <a href="{{item_power.lien}}">[voir]</a></label>
                 <br>
             {% endfor %}
-        </div>
+        </div></p>
 
-        <p><h3>Keyboard <a href="/glossaire/keyboard">(description)</a></h3></p>
-        <div>
+        <p><h3 class="computer">Keyboard <span class="small-link"><a href="/glossaire/keyboard">(description)</a></span></h3>
+        <div class="paragraphe-ordinateur">
             {% for item_kb in choix['keyboard'] %}
                 <input type="radio" id="{{item_kb}}" name="keyboard" value="{{item_kb.description}}">
                 <label for="{{item_kb}}"><u>{{item_kb.prix}}</u> - {{item_kb.description}}
                 <a href="{{item_kb.lien}}">[voir]</a></label>
                 <br>
             {% endfor %}
-        </div>
+        </div></p>
 
-        <p><h3>Mouse <a href="/glossaire/mouse">(description)</a></h3></p>
-        <div>
+        <p><h3 class="computer">Mouse <span class="small-link"><a href="/glossaire/mouse">(description)</a></span></h3>
+        <div class="paragraphe-ordinateur">
             {% for item_mouse in choix['mouse'] %}
                 <input type="radio" id="{{item_mouse}}" name="mouse" value="{{item_mouse.description}}">
                 <label for="{{item_mouse}}"><u>{{item_mouse.prix}}</u> - {{item_mouse.description}}
                 <a href="{{item_mouse.lien}}">[voir]</a></label>
                 <br>
             {% endfor %}
-        </div>
+        </div></p>
 
-        <p><h3>Monitor <a href="/glossaire/monitor">(description)</a></h3></p>
-        <div>
+        <p><h3 class="computer">Monitor <a href="/glossaire/monitor">(description)</a></span></h3>
+        <div class="paragraphe-ordinateur">
             {% for item_monitor in choix['monitor'] %}
                 <input type="radio" id="{{item_monitor}}" name="monitor" value="{{item_monitor.description}}">
                 <label for="{{item_monitor}}"><u>{{item_monitor.prix}}</u> - {{item_monitor.description}}
                 <a href="{{item_monitor.lien}}">[voir]</a></label>
                 <br>
             {% endfor %}
-        </div>
+        </div></p>
 
+        <br>
+        <div id="postal-code">
         <p>
             Pour ajouter la livraison, entrez votre code postal :
             <input type="text" name="postalcode">
-            <br><br>
-            <button type="submit">Calculer le prix!</button>
+            <br>
+        </p></div>
+        <p>
+            <span class="paragraphe-ordinateur">
+            <button type="submit">Calculer le prix!</button></span>
         </p>
     </form>
 </body>

@@ -21,62 +21,64 @@
 
         {%if ((page * 6) - 3) == (long_tab_deux_pg - 1) %}
 
-            <p>{{tab_deux_pg[(page * 6) - 6]}}
+            <div class="article">
+            <p><span class="titre"><b>{{tab_deux_pg[(page * 6) - 6]}}</b></span>
 
                 {% for pg_A in tab_deux_pg[(page * 6) - 5] %}
                     <br><br> {{pg_A}}
                 {% endfor %}
 
-                <br><br> <a href="/article/{{(page * 3) - 3}}">Lire l'article</a></p>
+                <br><br> <a href="/article/{{(page * 3) - 3}}">Lire l'article</a></p></div>
 
-
-            <p>{{tab_deux_pg[(page * 6) - 4]}}
+            <div class="article">
+            <p><span class="titre"><b>{{tab_deux_pg[(page * 6) - 4]}}</b></span>
 
                 {% for pg_B in tab_deux_pg[(page * 6) - 3] %}
                     <br><br> {{pg_B}}
                 {% endfor %}
 
-                <br><br> <a href="/article/{{(page * 3) - 2}}">Lire l'article</a></p>
+                <br><br> <a href="/article/{{(page * 3) - 2}}">Lire l'article</a></p></div>
 
 
         {% elif ((page * 6) - 5) == (long_tab_deux_pg - 1) %}
 
-            <p>{{tab_deux_pg[(page * 6) - 6]}}
+            <div class="article">
+            <p><span class="titre"><b>{{tab_deux_pg[(page * 6) - 6]}}</b></span>
 
                 {% for pg_A in tab_deux_pg[(page * 6) - 5] %}
                     <br><br> {{pg_A}}
                 {% endfor %}
 
-                <br><br> <a href="/article/{{(page * 3) - 3}}">Lire l'article</a></p>
-
+                <br><br> <a href="/article/{{(page * 3) - 3}}">Lire l'article</a></p></div>
 
         {% else %}
 
-            <p>{{tab_deux_pg[(page * 6) - 6]}}
+            <div class="article">
+            <p><span class="titre"><b>{{tab_deux_pg[(page * 6) - 6]}}</b></span>
 
                 {% for pg_A in tab_deux_pg[(page * 6) - 5] %}
                     <br><br> {{pg_A}}
                 {% endfor %}
 
-                <br><br> <a href="/article/{{(page * 3) - 3}}">Lire l'article</a></p>
+                <br><br> <a href="/article/{{(page * 3) - 3}}">Lire l'article</a></p></div>
 
-
-            <p>{{tab_deux_pg[(page * 6) - 4]}}
+            <div class="article">
+            <p><span class="titre"><b>{{tab_deux_pg[(page * 6) - 4]}}</b></span>
 
                 {% for pg_B in tab_deux_pg[(page * 6) - 3] %}
                     <br><br> {{pg_B}}
                 {% endfor %}
 
-                <br><br> <a href="/article/{{(page * 3) - 2}}">Lire l'article</a></p>
+                <br><br> <a href="/article/{{(page * 3) - 2}}">Lire l'article</a></p></div>
 
-
-            <p>{{tab_deux_pg[(page * 6) - 2]}}
+            <div class="article">
+            <p><span class="titre"><b>{{tab_deux_pg[(page * 6) - 2]}}</b></span>
 
                 {% for pg_C in tab_deux_pg[(page * 6) - 1] %}
                     <br><br> {{pg_C}}
                 {% endfor %}
 
-                <br><br> <a href="/article/{{(page * 3) - 1}}">Lire l'article</a></p>
+                <br><br> <a href="/article/{{(page * 3) - 1}}">Lire l'article</a></p></div>
 
         {% endif %}
 
@@ -85,34 +87,36 @@
 
     {% if nb_total_pages != page %}
 
-        <p>{{tab_deux_pg[(page * 6) - 6]}}
+        <div class="article">
+        <p><span class="titre"><b>{{tab_deux_pg[(page * 6) - 6]}}</b></span>
 
             {% for pg_A in tab_deux_pg[(page * 6) - 5] %}
                 <br><br> {{pg_A}}
             {% endfor %}
 
-            <br><br> <a href="/article/{{(page * 3) - 3}}">Lire l'article</a></p>
+            <br><br> <a href="/article/{{(page * 3) - 3}}">Lire l'article</a></p></div>
 
-
-        <p>{{tab_deux_pg[(page * 6) - 4]}}
+        <div class="article">
+        <p><span class="titre"><b>{{tab_deux_pg[(page * 6) - 4]}}</b></span>
 
             {% for pg_B in tab_deux_pg[(page * 6) - 3] %}
                 <br><br> {{pg_B}}
             {% endfor %}
 
-            <br><br> <a href="/article/{{(page * 3) - 2}}">Lire l'article</a></p>
+            <br><br> <a href="/article/{{(page * 3) - 2}}">Lire l'article</a></p></div>
 
-
-        <p>{{tab_deux_pg[(page * 6) - 2]}}
+        <div class="article">
+        <p><span class="titre"><b>{{tab_deux_pg[(page * 6) - 2]}}</b></span>
 
             {% for pg_C in tab_deux_pg[(page * 6) - 1] %}
                 <br><br> {{pg_C}}
             {% endfor %}
 
-            <br><br> <a href="/article/{{(page * 3) - 1}}">Lire l'article</a></p>
+            <br><br> <a href="/article/{{(page * 3) - 1}}">Lire l'article</a></p></div>
 
     {% endif %}
 
+    <div class="pagination">
     <br>
     {% for nb_page in range(1, nb_total_pages + 1) %}
 
@@ -124,7 +128,7 @@
 
         {% endif %}
     {% endfor %}
-    <br><br>
+    <br><br></div>
     <p class="beforefooter-blog"></p>
 </body>
 

@@ -15,9 +15,9 @@
 <body>
     <h1>OrdinaLand<br><span class="h1"><i><u>La</u> référence en matière d'ordinateurs</i></span></h1>
 
-    <h2>Votre ordinateur</h2>
+    <h3>Votre ordinateur</h3>
     <p>
-    <ul>
+    <ul class="glossaire-mots">
         {% if order['case'] %}
             <li>{{order['case']}}</li>
         {% endif %}
@@ -51,7 +51,7 @@
     </ul>
     </p>
 
-    <p>
+    <p class="paragraphe-ordinateur">
         Sous-total : {{subtotal}}$
         <br><br>
         Taxes : {{tax}}$
@@ -59,8 +59,11 @@
         {% if postalcode %}
             Livraison : {{postalcode}}$
         {% endif %}
+        <span id="total">
+        Total : {{grand_total}}$</span>
     </p>
-    <h3>Total : {{grand_total}}$</h3>
+    <p class="beforefooter-total"></p>
+
 </body>
 
 <footer><p class="footer">2022 - OrdinaLand</p></footer>

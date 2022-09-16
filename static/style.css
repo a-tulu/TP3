@@ -30,34 +30,6 @@ body {
     margin: 0;
 }
 
-footer {
-    background-color: #f9afbc;
-    text-align: center;
-    padding: 1px;
-    color: #574e4e;
-}
-
-
-.beforefooter {
-    padding-bottom: 177px;
-}
-
-.beforefooter-blog {
-    padding-bottom: 201px;
-}
-
-.beforefooter-glossaire {
-    padding-bottom: 404px;
-}
-
-.beforefooter-contact {
-    padding-bottom: 115px;
-}
-
-.beforefooter-definition {
-    padding-bottom: 383px;
-}
-
 h1 {
     background-color: #f9afbc;
     font-family: sans-serif;
@@ -69,4 +41,139 @@ h1 {
 span.h1 {
     color: #4d4d4d;
     font-size: 22px;
+}
+
+h3 {
+    font-family: sans-serif;
+    margin-left: 50px;
+    margin-top: 41px;
+    font-size: 25px;
+}
+
+h3.plus-article {
+    font-family: sans-serif;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+h3.computer {
+    font-size: 20px;
+    margin-bottom: 3px;
+}
+
+a {
+    color: #1e3de1;
+}
+
+footer {
+    background-color: #f9afbc;
+    text-align: center;
+    padding: 1px;
+    color: #574e4e;
+}
+
+.beforefooter {
+    padding-bottom: 20px;
+    margin-left: 50px;
+}
+
+.beforefooter-blog {
+    padding-bottom: 320px;
+}
+
+.beforefooter-glossaire {
+    padding-bottom: 320px;
+}
+
+.beforefooter-contact {
+    padding-bottom: 65px;
+}
+
+.beforefooter-definition {
+    padding-bottom: 383px;
+}
+
+.beforefooter-total {
+    padding-bottom: 448px;
+}
+
+.accueil {
+    background-color: #e6e68b;
+    margin-left: 115px;
+    margin-right: 115px;
+    margin-top: 65px;
+    padding-left: 18px;
+    padding-bottom: 18px;
+    padding-top: 1px;
+    font-family: sans-serif;
+    border-radius: 20px;
+}
+
+.timesnewroman {
+    font-family: timesnewroman;
+    font-size: 19px;
+}
+
+.article {
+    border-left: 4px solid pink;
+    margin-left: 50px;
+    border-top: 1px solid pink;
+    border-right: 1px solid pink;
+    border-bottom: 1px solid pink;
+    margin-right: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 15px;
+}
+
+.titre {
+    font-family: sans-serif;
+    font-size: 22px;
+    margin: 0;
+}
+
+.pagination {
+    margin-left: 50px;
+    font-size: 23px;
+}
+
+.page-article {
+    margin-left: 50px;
+    font-size: 17px;
+}
+
+.glossaire-mots {
+    margin-left: 60px;
+    font-size: 18px;
+}
+
+.paragraphe-format {
+    margin-left: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size: 17px;
+}
+
+.small-link {
+    font-size: 16px;
+}
+
+.paragraphe-ordinateur {
+    margin-left: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size: 17px;
+}
+
+#postal-code {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size: 17px;
+}
+
+#total {
+    font-size: 24px;
 }

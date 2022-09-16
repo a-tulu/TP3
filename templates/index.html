@@ -15,28 +15,40 @@
 <body>
     <h1>OrdinaLand<br><span class="h1"><i><u>La</u> référence en matière d'ordinateurs</i></span></h1>
 
-    <h2>Première visite sur le site<br>Faites un tour sur notre <a href="/construire">outil d'aide à monter un
-        ordinateur!</a></h2>
+    <div class="accueil">
+    <p>
+        <h2>Première visite sur le site?</h2>
+        <span class="timesnewroman">
+        Faites un tour sur notre <a href="/construire">outil d'aide à monter un ordinateur!</a>
+        </span>
+    </p>
+    </div>
 
     <h3>Sur le Blog...</h3>
 
-    <p>{{titre_1}}
+    <div class="article">
+    <p><span class="titre"><b>{{titre_1}}</b></span>
         {% for pg1 in pg_1 %}
-            <br><br> {{pg1}}
+        <br><br> {{pg1}}
         {% endfor %}
         <br><br> <a href="/article/{{id_1}}">Lire l'article</a></p>
+    </div>
 
-    <p>{{titre_2}}
+    <div class="article">
+    <p><span class="titre"><b>{{titre_2}}</b></span>
         {% for pg2 in pg_2 %}
             <br><br> {{pg2}}
         {% endfor %}
         <br><br> <a href="/article/{{id_2}}">Lire l'article</a></p>
+    </div>
 
-    <p>{{titre_3}}
+    <div class="article">
+    <p><span class="titre"><b>{{titre_3}}</b></span>
         {% for pg3 in pg_3 %}
             <br><br> {{pg3}}
         {% endfor %}
         <br><br> <a href="/article/{{id_3}}">Lire l'article</a></p>
+    </div>
 
     <p class="beforefooter"><a href="/blog/1">Voir tous les articles de blog</a></p>
 </body>

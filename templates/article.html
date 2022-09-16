@@ -15,8 +15,9 @@
 <body>
     <h1>OrdinaLand<br><span class="h1"><i><u>La</u> référence en matière d'ordinateurs</i></span></h1>
 
-    <h2><b>{{titre}} publié le {{date}}</b></h2>
+    <h3>{{titre}} publié le {{date}}</h3>
 
+    <div class="page-article">
     <p>Temps de lecture : {{temps_de_lecture}} secondes</p>
 
     <p><img src="/static/{{image}}" alt="{{image}}" /></p>
@@ -24,10 +25,11 @@
     <p> {% for pg in texte %}
             <br><br> {{pg}}
         {% endfor %}
-    </p>
+    </p></div>
 
-    <h2>Plus d'articles...</h2>
+    <h3 class="plus-article">Plus d'articles...</h3>
 
+    <div class="page-article">
     {% if id == (long_tab_articles - 1) %}
         <p><a href="/article/{{id - 1}}"><<< {{tab_articles[id - 1].titre}}</a></p>
 
@@ -38,6 +40,7 @@
         <p><a href="/article/{{id - 1}}"><<< {{tab_articles[id - 1].titre}}</a><br><br>
             <a href="/article/{{id + 1}}">{{tab_articles[id + 1].titre}} >>></a></p>
     {% endif %}
+    </div>
 </body>
 
 <footer><p class="footer">2022 - OrdinaLand</p></footer>
